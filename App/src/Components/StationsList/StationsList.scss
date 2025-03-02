@@ -1,0 +1,15 @@
+.stationsList {
+  li {
+    transition: 0.3s;
+    border-bottom: solid 1px var(--bs-gray-dark);
+  }
+
+  li:hover {
+    background-color: var(--bs-gray-dark);
+    cursor: pointer;
+  }
+
+  li.active {
+    border-bottom: solid 1px #0f0;
+  }
+}

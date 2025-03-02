@@ -1,12 +1,20 @@
 import { Outlet } from "react-router-dom"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./DefaultPage.scss"
 
-
-export const DefaultPage = ()=>{
+export default function DefaultPage (){
+    
     return(
         <>
-        Default Page
+        <ToastContainer
+            position="top-right"
+            theme="dark"
+        />
         <Outlet/>
         </>
  
 )
 }
+

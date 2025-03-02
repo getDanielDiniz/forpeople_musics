@@ -1,0 +1,45 @@
+
+.component-dotsbutton{
+    position: relative;
+    
+    .component-dotsmenu{
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: fade .5s .3s ease-in-out forwards;
+    }
+    svg{
+        animation: spin .8s ease-in-out;
+    }
+}
+
+.component-dotsbutton > svg {
+    transition: .3s;
+}
+
+.component-dotsbutton > svg:hover {
+    cursor: pointer;
+    fill: var(--bs-indigo);
+}
+
+
+@keyframes fade {
+    0% {
+        transform: translate(0%,-35%) scale(0.2);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(-100%,-35%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

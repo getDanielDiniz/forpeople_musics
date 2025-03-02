@@ -1,0 +1,62 @@
+
+.component-button{
+    svg{
+        transition: .3s;
+    }
+}
+
+.component-button:hover{
+    svg{
+        color: #fff;
+        filter: drop-shadow(0px 0px 10px var(--bs-indigo))
+                drop-shadow(0px 0px 20px var(--bs-indigo))
+                drop-shadow(0px 0px 40px var(--bs-indigo))
+        ;
+    }
+}
+
+.component-pausebutton{
+    animation: fall .3s ease-out forwards;
+}
+
+.component-playbutton{
+    animation: wakeUp .3s ease-out forwards;
+}
+
+@keyframes fall {
+    0%{
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    50%{
+        opacity:1;
+        transform: translateY(0);
+    }
+
+    75%{
+        transform: translateY(-20%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes wakeUp {
+    0%{
+        opacity: 0;
+        transform: translateY(200%);
+    }
+
+    50%{
+        opacity:1;
+        transform: translateY(0);
+    }
+
+    75%{
+        transform: translateY(20%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
