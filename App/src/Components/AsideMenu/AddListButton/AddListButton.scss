@@ -1,0 +1,22 @@
+.component-addbutton{
+    div{
+        width: fit-content;
+    }
+
+    .component-plusButton{
+        transition: .3s;
+    }
+    .component-plusButton:hover{
+        fill: var(--bs-indigo)
+    }
+    
+    .component-checkButton{
+        fill: #00FF00;
+        transition: .5s;
+    }
+    
+    .component-removeButton{
+        fill:#F00;
+        transition: .5s;
+    }
+}

@@ -1,8 +1,8 @@
-import { ActiveStation } from "../../../../../Types/ActiveStation";
-import RadioStation from "../../../../../Types/Responses/RadioStation/InterfaceRadioStation";
+import {FilteredStation } from "../../../../../Types/FilteresStation";
 
 export interface stationsInicialStateInterface {
     numberOfElements:number;
-    list: RadioStation[],
-    active:ActiveStation | null
+    list: FilteredStation[],
+    active:FilteredStation | null,
+    favoriteStations: FilteredStation[]
 }

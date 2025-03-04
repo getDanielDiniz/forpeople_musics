@@ -4,8 +4,8 @@ import { LuPause } from "react-icons/lu";
 import "./PlayPause.scss";
 import RadioStation from "../../Types/Responses/RadioStation/InterfaceRadioStation";
 import { useDispatch, useSelector } from "react-redux";
-import { ActiveStation } from "../../Types/ActiveStation";
-import { activeStation, playMusic } from "../../Libs/Redux/slices/stationsList";
+import { FilteredStation } from "../../Types/FilteresStation";
+import { activeStation, playMusic } from "../../Libs/Redux/slices/stationsSlice";
 
 /**
  * Botão de play e pause que controla o estado de activeStation no Redux
@@ -19,7 +19,7 @@ export const PlayPauseButton = ({
   station,
 }: {
   className: string;
-  station: RadioStation | ActiveStation;
+  station: RadioStation | FilteredStation;
 }) => {
   const activeMusic = useSelector(activeStation);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -37,13 +37,17 @@ export const PlayPauseButton = ({
    */
   function handleClick() {
     if (station) {
-      const activeStation: ActiveStation = {
+      const activeStation: FilteredStation = {
         stationuuid: station.stationuuid,
         isPlaying: true,
         favicon: station.favicon,
         codec: `audio/${station!.codec.toLowerCase()}`,
         name: station.name!,
         url: station.url,
+        country:station.country,
+        countrycode: station.countrycode,
+        state: station.state,
+        tags: station.tags
       };
 
       if (activeMusic && isPlaying) {

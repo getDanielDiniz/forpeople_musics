@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { PlayPauseButton } from "../PlayPauseButton";
 import "./Player.scss";
-import { activeStation } from "../../Libs/Redux/slices/stationsList";
+import { activeStation } from "../../Libs/Redux/slices/stationsSlice";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
