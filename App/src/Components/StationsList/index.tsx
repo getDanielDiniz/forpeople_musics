@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { favoriteStationsList } from "../../Libs/Redux/slices/stationsSlice";
+import { favoriteStationsList, ListOfStations } from "../../Libs/Redux/slices/stationsSlice";
 import { PlayPauseButton } from "../PlayPauseButton";
 import { DotsMenu } from "../DotsMenu";
 import { FilteredStation } from "../../Types/FilteresStation";
@@ -9,7 +9,7 @@ import { FilteredStation } from "../../Types/FilteresStation";
  * @returns - Lista de estações já com botão de play e menu lateral
  */
 export const StationsList = () => {
-  const StationList: FilteredStation[] = useSelector(favoriteStationsList);
+  const StationList: FilteredStation[] = useSelector(ListOfStations);
 
   return (
     <ul className="container-md d-flex flex-column stationsList">

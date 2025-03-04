@@ -25,7 +25,7 @@ export default function DefaultPage() {
 
   return (
     //Não deixa a página scrollar quando o menu lateral tiver aberto
-    <main className={`bg-dark d-flex ${isMenuOpen ? "my-hidden-overflow" : ''}`}>
+    <main className={`bg-dark d-flex ${isMenuOpen ? "overflow-hidden" : 'overflow-scroll'}`}>
       <ToastContainer position="top-right" theme="dark" />
       <AsideMenu/>
       <Outlet />
