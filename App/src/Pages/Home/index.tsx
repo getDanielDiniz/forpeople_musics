@@ -6,6 +6,7 @@ import "./PageHome.scss";
 import { Logo } from "../../Components/Logo";
 import { CiSearch } from "react-icons/ci";
 import { StationsList } from "../../Components/StationsList";
+import { Player } from "../../Components/Player";
 
 export const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -25,6 +26,7 @@ export const HomePage = () => {
         </button>
       </div>
       <StationsList/>
+      <Player/>
     </main>
   );
 };

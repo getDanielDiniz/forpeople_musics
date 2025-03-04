@@ -1,33 +1,43 @@
 interface RadioStation {
-  checkuuid: string; // UUID
-  stationuuid: string; // UUID
-  source: string; // DNS Name of the server
-  codec: string; // High level name of the used codec
-  bitrate: number; // Bitrate in kBit/s
-  hls: number; // 1 means HLS stream, otherwise 0
-  ok: number; // 1 means the stream is reachable, otherwise 0
-  timestamp_iso8601: string; // Date and time of check creation in ISO 8601 format
-  timestamp: string; // Date and time of check creation in YYYY-MM-DD HH:mm:ss format
-  urlcache: string; // Direct stream URL after resolution
-  metainfo_overrides_database: number; // 1 means override local DB with extended info
-  public: number | null; // 1 means public, otherwise 0, nullable
-  name: string | null; // Stream name, nullable
-  description: string | null; // Stream description, nullable
-  tags: string | null; // Comma-separated list of tags (genres), nullable
-  countrycode: string | null; // Official country code, nullable
-  countrysubdivisioncode: string | null; // Official country subdivision code, nullable
-  homepage: string | null; // Homepage URL, nullable
-  favicon: string | null; // Favicon URL, nullable
-  loadbalancer: string | null; // Loadbalancer info, nullable
-  server_software: string | null; // Server software name, nullable
-  sampling: number | null; // Audio sampling frequency in Hz, nullable
-  timing_ms: number; // Time taken for the check in milliseconds
-  languagecodes: string | null; // Language codes, nullable
-  ssl_error: number; // 1 means SSL error occurred, otherwise 0
-  geo_lat: number | null; // Latitude of the stream, nullable
-  geo_long: number | null; // Longitude of the stream, nullable
-  state: string | null; // Full name of the entity where the station is located inside the country
+  changeuuid: string;
+  stationuuid: string;
+  serveruuid: string;
+  name: string;
+  url: string;
+  url_resolved: string;
+  homepage: string;
+  favicon: string| null;
+  tags: string;
+  country: string;
+  countrycode: string;
+  iso_3166_2: string;
+  state: string;
+  language: string;
+  languagecodes: string;
+  votes: number;
+  lastchangetime: string;
+  lastchangetime_iso8601: string;
+  codec: string;
+  bitrate: number;
+  hls: number;
+  lastcheckok: number;
+  lastchecktime: string;
+  lastchecktime_iso8601: string;
+  lastcheckoktime: string;
+  lastcheckoktime_iso8601: string;
+  lastlocalchecktime: string;
+  lastlocalchecktime_iso8601: string;
+  clicktimestamp: string;
+  clicktimestamp_iso8601: string;
+  clickcount: number;
+  clicktrend: number;
+  ssl_error: number;
+  geo_lat: number | null;
+  geo_long: number | null;
+  geo_distance: number | null;
+  has_extended_info: boolean;
 }
+
 
 
   export default RadioStation

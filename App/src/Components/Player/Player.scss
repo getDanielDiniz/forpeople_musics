@@ -1,0 +1,92 @@
+.component-player {
+  position: fixed;
+  bottom: 5vh;
+  transform: translate(12.5%, 0);
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(0, 0, 0, 0.1)
+  ) !important;
+  backdrop-filter: blur(3px);
+  transition: 1s;
+  overflow: hidden;
+  animation: wakeUp .3s ease-out forwards;
+}
+
+.component-player::before,
+.component-player::after,
+.component-player_animation::after,
+.component-player_animation::before {
+  display: block;
+  position: absolute;
+  content: "";
+  background: #fff;
+  height: 2px;
+  width: 2px;
+  box-shadow: 0px 0px 10px var(--bs-indigo), 0px 0px 20px var(--bs-indigo),
+    0px 0px 40px var(--bs-indigo);
+}
+
+.component-player::before {
+  bottom: -100%;
+  left: 0;
+  height: 100%;
+  animation: grow_vertical ease-in-out 3s 0.5s infinite;
+}
+
+.component-player::after {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  animation: grow_horizontal ease-in-out 3s 2s infinite;
+}
+
+.component-player_animation::before {
+  bottom: 100%;
+  right: 0;
+  height: 100%;
+  animation: grow_vertical ease-in-out 3s 3.5s reverse infinite;
+}
+
+.component-player_animation::after {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  animation: grow_horizontal ease-in-out 3s 5s reverse infinite;
+}
+
+@keyframes grow_vertical {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 100%;
+  }
+}
+
+@keyframes grow_horizontal {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes wakeUp {
+    0%{
+        transform: translate(12.5%,200%);
+    }
+
+    50%{
+        opacity:1;
+        transform: translate(12.5%,0);
+    }
+
+    75%{
+        transform: translate(12.5%,20%);
+    }
+    100%{
+        transform: translate(12.5%,0);
+    }
+}
