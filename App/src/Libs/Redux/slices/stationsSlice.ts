@@ -75,7 +75,6 @@ export const fetchQueriedStations = createAsyncThunk(
 
     const stations: RadioStation[] = await GetQueriedStations(
       query,
-      dispatch,
       state
     );
     const filteredStations = FilterRadioStationInformation(stations);
