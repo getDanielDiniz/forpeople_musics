@@ -1,9 +1,16 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import GetStations from "../../../Services/StationsServices/GET_StationList";
 import { toast } from "react-toastify";
 import { stationsSlice_initialState } from "./inicialStates/stationsSlice/inicialstate";
 import { stationsInicialStateInterface } from "./inicialStates/stationsSlice/interface";
 import { FilteredStation } from "../../../Types/FilteresStation";
+import GetQueriedStations from "../../../Services/StationsServices/GET_QueriedStations";
+import FilterRadioStationInformation from "../../../utils/FilterRadioStationInformation";
+import RadioStation from "../../../Types/Responses/RadioStation/InterfaceRadioStation";
+import { AllStations_case } from "./Cases/AllStations_case";
+import { QueriedStations_case } from "./Cases/QueriedStations_case";
+import handleFavoriteStationList from "../../../utils/handleFavoriteList";
+import IHandleFavoriteList from "../../../Types/params/IHandleFavoriteLists";
 
 const initialState = stationsSlice_initialState;
 
@@ -19,69 +26,66 @@ export const StationsSlice = createSlice({
       state.active = action.payload as FilteredStation;
     },
 
-    /**
-     *
-     * @param {FilteredStation}action - Estação a adicionar nos favoritos
-     */
-    updateFavoriteList: (state, action) => {
-      const station = {...action.payload, isPlaying : false} as FilteredStation;
+    updateFavoriteList: (state, action: {payload : IHandleFavoriteList}) => {
+      const param = {...action.payload, favoriteList: state.favoriteStations}
+      const newList = handleFavoriteStationList(param);
+      if (newList == null){
+        toast.error("Error on update favorite list")
+        return
+      }
 
-      state.favoriteStations.push(station);
-      localStorage.setItem(
-        "favoriteStations",
-        JSON.stringify(state.favoriteStations)
-      );
-
-      toast.success("Estação adicionada as favoritas!")
+      localStorage.setItem("favoriteStations", JSON.stringify(newList));
+      state.favoriteStations = newList;
+      toast.success("Lista de favoritos atualizada!!");
     },
-    removeFavoriteStation: (state,action:PayloadAction<string>)=>{
-      state.favoriteStations = state.favoriteStations.filter((e)=> e.stationuuid !== action.payload)
-
-      localStorage.setItem(
-        "favoriteStations",
-        JSON.stringify(state.favoriteStations)
-      );
-      toast.success("Estação removida das favoritas!")
-    }
+    removeFavoriteStation: ()=>{}
   },
 
   extraReducers: (builder) => {
-    builder.addCase(fetchStations.pending, () => {}),
-      builder.addCase(fetchStations.fulfilled, (state, action) => {
-        state.list = action.payload as FilteredStation[];
-      }),
-      builder.addCase(fetchStations.rejected, (state, action) => {
-        toast.error(action.error.message);
-      });
+    AllStations_case(builder), QueriedStations_case(builder);
   },
 });
 
 /**
- * Método assíncrono com thunk
+ * Métodos assíncrono com thunk
  */
 export const fetchStations = createAsyncThunk(
   "stations/fetchStations",
-  async () => {
-    const allStations = await GetStations(10, null);
+  async (__, { getState }) => {
+    const globalState: any = getState();
+    const stationsState: stationsInicialStateInterface = globalState.stations;
 
-    return allStations.map((element) => {
-      if (element) {
-        const filteredStation: FilteredStation = {
-          stationuuid: element.stationuuid,
-          isPlaying: true,
-          favicon: element.favicon,
-          codec: `audio/${element!.codec.toLowerCase()}`,
-          name: element.name!,
-          url: element.url,
-          country: element.country,
-          countrycode: element.countrycode,
-          state: element.state,
-          tags: element.tags,
-        };
+    if (stationsState.list.length == 0) {
+      const allStations = await GetStations(10);
+      return FilterRadioStationInformation(allStations);
+    }
+  }
+);
 
-        return filteredStation;
-      }
-    });
+export const fetchQueriedStations = createAsyncThunk(
+  "stations/fetchFilteredStations",
+  async (query: string, { dispatch, getState }) => {
+    //Define número mínimo de letras que precisam ser escritas para pesquisa.
+    //Se a query tiver letras insuficientes busca as estações iniciais
+    if (query.length <= 2) {
+      dispatch(fetchStations);
+    }
+
+    const state = getState(); //Importa toda a store.
+
+    const stations: RadioStation[] = await GetQueriedStations(
+      query,
+      dispatch,
+      state
+    );
+    const filteredStations = FilterRadioStationInformation(stations);
+
+    const action = {
+      query: query,
+      data: filteredStations,
+    };
+
+    return action;
   }
 );
 

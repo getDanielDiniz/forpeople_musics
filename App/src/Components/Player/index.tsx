@@ -4,6 +4,7 @@ import "./Player.scss";
 import { activeStation } from "../../Libs/Redux/slices/stationsSlice";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { AddListButton } from "../AddFavoritesButton/AddListButton";
 
 /**
  * Caso haja uma estação ativa renderiza um Player central na tela
@@ -42,7 +43,10 @@ export const Player = () => {
 
           <h2 className="text-white fs-3 col-10 ">{activeMusic.name}</h2>
         </div>
-        <PlayPauseButton className="col-md-2" station={activeMusic} />
+        <section className="buttons-player w-25 d-flex justify-content-around">
+          <AddListButton className="" station={activeMusic}/>
+          <PlayPauseButton className="" station={activeMusic} />
+        </section>
         <audio ref={audioRef}>
           <source type={activeMusic.codec} />
         </audio>

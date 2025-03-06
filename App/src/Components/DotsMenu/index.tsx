@@ -4,8 +4,9 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./DotsMenu.scss";
 import { EditButton } from "./EditButton";
 import { TrashButton } from "./TrashButton";
+import { FilteredStation } from "../../Types/FilteresStation";
 
-export const DotsMenu = ({ className }: { className: string }) => {
+export const DotsMenu = ({ className, station }: { className: string, station:FilteredStation }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleDropdown() {
@@ -21,8 +22,8 @@ export const DotsMenu = ({ className }: { className: string }) => {
             <>
                 <AiOutlineClose className="text-white fs-3" />
                 <div className="component-dotsmenu text-white p-2 d-flex flex-column gap-2">
-                    <EditButton/>
-                    <TrashButton/>
+                    <EditButton station={station}/>
+                    <TrashButton station={station}/>
                 </div>
             </> 
             :

@@ -1,15 +1,17 @@
 import { useSelector } from "react-redux";
-import { favoriteStationsList, ListOfStations } from "../../Libs/Redux/slices/stationsSlice";
+import { favoriteStationsList } from "../../Libs/Redux/slices/stationsSlice";
 import { PlayPauseButton } from "../PlayPauseButton";
 import { DotsMenu } from "../DotsMenu";
 import { FilteredStation } from "../../Types/FilteresStation";
+import "./StationsList.scss"
+import { Content } from "./Content";
 
 /**
  *
  * @returns - Lista de estações já com botão de play e menu lateral
  */
 export const StationsList = () => {
-  const StationList: FilteredStation[] = useSelector(ListOfStations);
+  const StationList: FilteredStation[] = useSelector(favoriteStationsList);
 
   return (
     <ul className="container-md d-flex flex-column stationsList">
@@ -22,19 +24,8 @@ export const StationsList = () => {
               key={station.stationuuid}
             >
               <PlayPauseButton className="col-md-1 col-2" station={station} />
-              <div className="col-md-10 col-8 flex-fill d-flex flex-column gap-1">
-                <h5 className="mb-0">{station.name}</h5>
-                <div className="d-flex gap-2">
-                  <span>
-                    {station.country ? station.country : station.countrycode}
-                  </span>
-                  <span>
-                    {station.state && `- ${station.state}`}
-                  </span>
-                </div>
-                <span>{station.tags && station.tags}</span>
-              </div>
-              <DotsMenu className="col-md-1 col-2" />
+              <Content station={station} />
+              <DotsMenu station={station} className="col-md-1 col-2" />
             </li>
           );
         })}

@@ -3,6 +3,7 @@ import { AllStationsList } from "./allStationsList/AllStationsList"
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { AsideMenuState, toggleAsideMenu } from "../../Libs/Redux/slices/configsSlice";
+import { SearchInput } from "./searchInput";
 
 export const AsideMenu = ()=>{
 
@@ -17,6 +18,7 @@ export const AsideMenu = ()=>{
                 onClick={()=>dispatch(toggleAsideMenu())}>
                     <AiOutlineClose className="text-white fs-3"/>
                 </button>
+                <SearchInput className="align-self-start w-75"/>
                 <AllStationsList/>
             </aside>
             <div className="component-aside_blur col-auto"

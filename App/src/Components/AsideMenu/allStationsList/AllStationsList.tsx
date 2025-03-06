@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { PlayPauseButton } from "../../PlayPauseButton";
 import { ListOfStations } from "../../../Libs/Redux/slices/stationsSlice";
-import { AddListButton } from "../AddListButton/AddListButton";
+import { AddListButton } from "../../AddFavoritesButton/AddListButton";
 import { FilteredStation } from "../../../Types/FilteresStation";
+import "./AllStationsList.scss"
 
 /**
  *
@@ -12,7 +13,7 @@ export const AllStationsList = () => {
   const StationList: FilteredStation[] = useSelector(ListOfStations);
 
   return (
-    <ul className="container-fluid d-flex p-3 flex-column overflow-auto gap-4">
+    <ul className="container-fluid d-flex p-3 flex-column overflow-auto min-vh-100 gap-4 component-allStationsList">
       {StationList &&
         StationList.map((station) => {
           return (

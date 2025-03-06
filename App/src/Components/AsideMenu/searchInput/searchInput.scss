@@ -1,0 +1,16 @@
+
+
+.component-searchInput{
+    border: solid 2px var(--bs-gray-dark);
+    transition: .3s;
+}
+
+.component-searchInput:hover{
+    border: solid 2px var(--bs-gray)
+}
+
+.component-searchInput:focus,
+.component-searchInput:active{
+    outline: none;
+    border: 1px solid #fff
+}

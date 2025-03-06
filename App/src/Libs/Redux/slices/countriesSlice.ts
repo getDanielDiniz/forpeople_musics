@@ -1,9 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import GetAllCountries from "../../../Services/CountriesServices/Get_AllCountries"
-
-const initialState = {
-    countriesList:["Brazil"]
-}
+import initialState from "./inicialStates/countriesSlice/initialstate"
+import ICountriesInitialState from "./inicialStates/countriesSlice/ICountriesInicialState"
 
 const countriesSlice = createSlice({
     name: "countries",
@@ -31,4 +29,4 @@ export const fetchCountries = createAsyncThunk(
 
 
 //Leitura do estado
-export const countriesList = (state:any) => state.countries.countriesList
+export const countriesList = (state:{countries:ICountriesInitialState}) => state.countries.countriesList

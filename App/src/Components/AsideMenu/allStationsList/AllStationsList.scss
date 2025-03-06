@@ -1,11 +1,11 @@
-.stationsList {
+.component-allStationsList {
   li {
-    transition: 0.3s;
+    transition: 0.6s;
     border-bottom: solid 1px var(--bs-gray-dark);
   }
 
   li:hover {
-    background-color: var(--bs-gray-dark);
+    border-bottom: solid 1px var(--bs-gray);
     cursor: pointer;
   }
 }

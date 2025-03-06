@@ -4,12 +4,12 @@ import { CiBookmarkRemove } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import {
   favoriteStationsList,
-  removeFavoriteStation,
   updateFavoriteList,
-} from "../../../Libs/Redux/slices/stationsSlice";
+} from "../../Libs/Redux/slices/stationsSlice";
 import { useEffect, useState } from "react";
-import { FilteredStation } from "../../../Types/FilteresStation";
+import { FilteredStation } from "../../Types/FilteresStation";
 import "./AddListButton.scss";
+import IHandleFavoriteList from "../../Types/params/IHandleFavoriteLists";
 
 /**
  * Botão de adicionar uma estação a lista de favoritos.
@@ -42,13 +42,14 @@ export const AddListButton = ({
    * Filtra as informações importantes de station
    * e atualiza o estado no redux
    */
-  function handleClick() {
-    if (alreadyInFavoriteList) {
-      dispatch(removeFavoriteStation(station.stationuuid))
+    function handleClick() {
+    const operation = alreadyInFavoriteList? "delete" : "create"
+    const payload:IHandleFavoriteList = {
+      operation:operation,
+      station: station
     }
-    else{
-      dispatch(updateFavoriteList(station));
-    }
+
+    dispatch(updateFavoriteList(payload));
   }
 
   return (

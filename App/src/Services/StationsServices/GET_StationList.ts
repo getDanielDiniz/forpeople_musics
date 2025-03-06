@@ -4,7 +4,7 @@ import RadioStation from "../../Types/Responses/RadioStation/InterfaceRadioStati
 /**
  * @returns - Lista de estações de rádio em caso de sucesso.
  */
-export default async function GetStations(numberOfElements:number, reverse:boolean | null):Promise<RadioStation[]> {
+export default async function GetStations(numberOfElements:number):Promise<RadioStation[]> {
 
     try {
         const payload = await api.get(`/stations/search?limit=${numberOfElements}`);
