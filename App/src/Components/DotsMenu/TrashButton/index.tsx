@@ -1,8 +1,8 @@
 import { GoTrash } from "react-icons/go";
 import "../MenuOptionsStylesheet.scss"
 import { FilteredStation } from "../../../Types/FilteresStation";
-import { favoriteStationsList, updateFavoriteList } from "../../../Libs/Redux/slices/stationsSlice";
-import { useDispatch, useSelector } from "react-redux";
+import {  updateFavoriteList } from "../../../Libs/Redux/slices/stationsSlice";
+import { useDispatch } from "react-redux";
 import IHandleFavoriteList from "../../../Types/params/IHandleFavoriteLists";
 
 export const TrashButton = ({station}: {station:FilteredStation})=>{
