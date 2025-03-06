@@ -4,9 +4,9 @@ Com uma interface simples e intuitiva, a aplicação permite que você explore e
 
 ## Sobre
 
-Bem-vindo ao repositório da **Central de Rádios**! Esta aplicação foi desenvolvida com Vite e React, proporcionando uma experiência de desenvolvimento rápida e fluida. Aqui, você encontrará um projeto ideal para aprendizado e experimentação com consumo de APIs.
+Bem-vindo ao repositório da **for people musics**! Esta aplicação foi desenvolvida com Vite e React, proporcionando uma experiência de desenvolvimento rápida e fluida. Aqui, você encontrará a plataforma ideal para ouvir aquela estação que tanto gosta!
 
-**Tema:** Consumo de API
+**Tema:** Desenvolvimento Front-End
 
 ## Requisitos
 
@@ -45,7 +45,6 @@ Para verificar a versão do npm:
 - [React Toastify](https://fkhadra.github.io/react-toastify/) - Notificações elegantes e personalizáveis.
 - [Sass](https://sass-lang.com/) - Pré-processador CSS para estilos mais dinâmicos.
 - [Bootstrap](https://getbootstrap.com/) - Framework para estilização responsiva.
-- [Zod](https://zod.dev/) - Biblioteca de validação de schemas.
 
 ## Instalação
 
@@ -91,6 +90,4 @@ Se você tiver alguma dúvida ou quiser compartilhar suas ideias, entre em conta
 
 <a align="center" href = "mailto:daniel.diniz.work@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 <a align="center" href="https://www.linkedin.com/in/getdanieldiniz/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
-
-<img align="center" width="100%" src="https://github.com/getDanielDiniz/getDanielDiniz/blob/main/Github%20Readme%20Banner.png?raw=true" />
 
