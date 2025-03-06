@@ -1,0 +1,67 @@
+.component-editContentForm {
+
+    div{
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+  .component-editContentForm_input:focus,
+  .component-editContentForm_input:active {
+    outline: none;
+    box-shadow: 2px 2px 10px #000;
+    transform: scale(1.008);
+  }
+
+  .component-editContentForm_input {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    background: var(--bs-gray-dark);
+    transition: 0.5s;
+    padding: 0.5rem 1rem;
+    border: 0;
+  }
+
+  .component-editContentForm_button {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    position: relative;
+    padding: 0.25rem 1rem;
+    //overflow: hidden;
+    color: #fff;
+    transition: 0.3s 0.5s;
+  }
+}
+
+.component-editContentForm:hover {
+  .component-editContentForm_input {
+    background: var(--bs-dark);
+  }
+}
+
+.component-editContentForm_button:hover:before {
+  transform: rotateX(0deg);
+  box-shadow: 2px 2px 10px #000;
+  color: #fff;
+}
+
+.component-editContentForm_button:hover {
+  color: transparent;
+}
+
+.component-editContentForm_button::before {
+  font-family: "Poppins", serif;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bs-indigo);
+  content: var(--label);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: 0.5s;
+  transform-origin: 100% 50%;
+  transform: rotateX(-90deg);
+}

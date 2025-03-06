@@ -20,7 +20,6 @@ export const StationsList = () => {
           return (
             <li
               className="row text-white p-2 d-flex align-items-center"
-              style={{ height: "120px" }}
               key={station.stationuuid}
             >
               <PlayPauseButton className="col-md-1 col-2" station={station} />

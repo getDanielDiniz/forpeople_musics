@@ -1,3 +1,3 @@
 export default interface ICountriesInitialState {
-    countriesList:Array<Object>
+    countriesList:Array<object>
 }

@@ -1,7 +1,14 @@
 .stationsList {
   li {
+    min-height: 9rem;
     transition: 0.3s;
     border-bottom: solid 1px var(--bs-gray-dark);
+
+    .component-content{
+      h5,span{
+        text-wrap: wrap;
+      }
+    }
   }
 
   li:hover {
