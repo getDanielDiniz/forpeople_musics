@@ -11,7 +11,10 @@ export const QueriedStations_case = (builder:ActionReducerMapBuilder<stationsIni
     builder.addCase(fetchQueriedStations.pending, ()=>{})
 
     //Sucesso
-    builder.addCase(fetchQueriedStations.fulfilled, (state,action)=>{
+    builder.addCase(fetchQueriedStations.fulfilled, (state,action: {payload: {
+        query: string;
+        data: FilteredStation[];
+    }})=>{
 
         if(action.payload && action.payload.data.length < 1 && state.list.length < 1){
             toast.info("Não foram encontradas estações com essa descrição")
@@ -22,7 +25,7 @@ export const QueriedStations_case = (builder:ActionReducerMapBuilder<stationsIni
     })
 
     //Falha
-    builder.addCase(fetchQueriedStations.rejected, (state, action)=>{
+    builder.addCase(fetchQueriedStations.rejected, (__, action)=>{
         console.error(action.error.message)
         toast.error("Error on search stations")
     })

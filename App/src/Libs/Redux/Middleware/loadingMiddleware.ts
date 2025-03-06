@@ -1,8 +1,6 @@
-import { Middleware, PayloadAction } from "@reduxjs/toolkit";
+import { Middleware } from "@reduxjs/toolkit";
 import { fetchQueriedStations, fetchStations } from "../slices/stationsSlice";
 import { toggleLoading } from "../slices/configsSlice";
-
-let numberOfChar = 0
 
 export const loadingMiddleware: Middleware =
   (storeAPI) => (next) => (action: any) => {
@@ -10,8 +8,6 @@ export const loadingMiddleware: Middleware =
       fetchQueriedStations.pending.type,
       fetchStations.pending.type,
     ];
-
-    const state = storeAPI.getState()
 
     const finalActions = {
       success: [
@@ -27,7 +23,7 @@ export const loadingMiddleware: Middleware =
     //Se o status da req está pendente, loading = true
     if (
       loadingActions.includes(action.type) &&
-      action.type !== toggleLoading("").type
+      action.type !== toggleLoading.type
     ) {
       storeAPI.dispatch(toggleLoading(true));
     } 

@@ -18,7 +18,7 @@ export const AllStations_case = (
     }),
     
     //Falha
-    builder.addCase(fetchStations.rejected, (state, action) => {
+    builder.addCase(fetchStations.rejected, (__, action) => {
       toast.error(action.error.message);
     });
 

@@ -7,7 +7,6 @@ import IHandleFavoriteList from "../../../Types/params/IHandleFavoriteLists";
 
 export const TrashButton = ({station}: {station:FilteredStation})=>{
 
-    const favoriteList = useSelector(favoriteStationsList);
     const dispatch = useDispatch()
 
     function handleClick() {

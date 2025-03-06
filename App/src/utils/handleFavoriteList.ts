@@ -10,7 +10,7 @@ import IHandleFavoriteList from "../Types/params/IHandleFavoriteLists";
 export default function handleFavoriteStationList(
   params: IHandleFavoriteList
 ): FilteredStation[] | null {
-  let newList = [...params.favoriteList];
+  let newList = [...params.favoriteList || []];
 
   switch (params.operation) {
     case "create":

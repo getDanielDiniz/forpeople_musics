@@ -1,11 +1,9 @@
-import { ThunkActionDispatch } from "redux-thunk";
 import api from "../../Libs/Axios/axiosInstance";
 import RadioStation from "../../Types/Responses/RadioStation/InterfaceRadioStation";
-import { toast } from "react-toastify";
 
 export default async function GetQueriedStations(
   query: string,
-  dispatch: ThunkActionDispatch<any>,
+  //dispatch: ThunkActionDispatch<any>,
   state: any
 ): Promise<RadioStation[]> {
   
