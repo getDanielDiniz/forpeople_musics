@@ -1,17 +1,28 @@
 import "./searchInput.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchQueriedStations } from "../../../Libs/Redux/slices/stationsSlice";
 import { AppDispatch } from "../../../Libs/Redux/store";
-import { getQuery, updateQuery } from "../../../Libs/Redux/slices/paramsRequestSlice";
+import { updateQuery } from "../../../Libs/Redux/slices/paramsRequestSlice";
+import { useState } from "react";
 
 export const SearchInput = ({ className }: { className: string }) => {
-
+  const [query, setQuery] = useState("");
   const dispatch = useDispatch<AppDispatch>();
-  const query = useSelector(getQuery)
+  const [lastFetch, setLastFetch] = useState(new Date());
 
   function handleChange(value: string) {
-      dispatch(updateQuery(value))
+    let agora: Date = new Date();
+    let diff = agora.getTime() - lastFetch.getTime(); //milissegundos
+    setQuery(value);
+    if (
+      // Ou em posições pares ou se tem mais de 300ms desde a ultima busca
+      value.trim().length % 2 === 0 ||
+      diff > 300
+    ) {
+      dispatch(updateQuery(value));
       dispatch(fetchQueriedStations(value));
+      setLastFetch(new Date());
+    }
   }
 
   return (
