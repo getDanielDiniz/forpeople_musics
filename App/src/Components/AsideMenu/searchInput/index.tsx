@@ -16,8 +16,8 @@ export const SearchInput = ({ className }: { className: string }) => {
     setQuery(value);
     if (
       // Ou em posições pares ou se tem mais de 300ms desde a ultima busca
-      value.trim().length % 2 === 0 ||
-      diff > 300
+      query.trim().length % 2 === 0 ||
+      diff > 500
     ) {
       dispatch(updateQuery(value));
       dispatch(fetchQueriedStations(value));
