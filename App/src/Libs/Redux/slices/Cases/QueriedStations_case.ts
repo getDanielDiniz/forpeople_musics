@@ -15,7 +15,6 @@ export const QueriedStations_case = (builder:ActionReducerMapBuilder<stationsIni
         query: string;
         data: FilteredStation[];
     }})=>{
-        console.log(action.payload.data)
         if(Array.isArray(action.payload.data) && action.payload.data.length ===0){
             toast.info("Não foram encontradas estações com essa descrição")
             return
