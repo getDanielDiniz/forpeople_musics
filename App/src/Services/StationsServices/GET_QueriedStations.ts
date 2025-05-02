@@ -3,7 +3,6 @@ import RadioStation from "../../Types/Responses/RadioStation/InterfaceRadioStati
 
 export default async function GetQueriedStations(
   query: string,
-  //dispatch: ThunkActionDispatch<any>,
   state: any
 ): Promise<RadioStation[]> {
   
@@ -11,7 +10,6 @@ export default async function GetQueriedStations(
   const filters: any = state.params.paramsList;
   let limit = 10;
 
-  //https://de1.api.radio-browser.info/json/stations/search?limit=10&countrycode=us
   try {
     for (const param in filters) {
       if (limit == 0) break;

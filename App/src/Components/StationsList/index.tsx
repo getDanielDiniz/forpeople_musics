@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { favoriteStationsList } from "../../Libs/Redux/slices/stationsSlice";
+import { FaMicrophoneSlash } from "react-icons/fa";
 import { PlayPauseButton } from "../PlayPauseButton";
 import { DotsMenu } from "../DotsMenu";
 import { FilteredStation } from "../../Types/FilteresStation";
@@ -12,6 +13,16 @@ import { Content } from "./Content";
  */
 export const StationsList = () => {
   const StationList: FilteredStation[] = useSelector(favoriteStationsList);
+
+  if(StationList.length < 1){
+    return(
+      <div className="container-fluid d-flex flex-column align-items-center overflow-hidden min-vh-100">
+        <FaMicrophoneSlash className="mt-5 text-white fs-1"/>
+        <span className="text-white mt-2">Oops! Parece que você ainda não adicionou uma estação a sua lista de favoritos.</span>  
+      </div>
+
+    )
+  }
 
   return (
     <ul className="container-md d-flex flex-column stationsList">

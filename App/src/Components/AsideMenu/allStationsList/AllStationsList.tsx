@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { PiEmptyLight } from "react-icons/pi";
 import { PlayPauseButton } from "../../PlayPauseButton";
 import { ListOfStations } from "../../../Libs/Redux/slices/stationsSlice";
 import { AddListButton } from "../../AddFavoritesButton/AddListButton";
@@ -11,6 +12,19 @@ import "./AllStationsList.scss"
  */
 export const AllStationsList = () => {
   const StationList: FilteredStation[] = useSelector(ListOfStations);
+
+  /**
+   * @returns - Informação visual sobre a pesquisa não ter achado nenhuma estação
+   */
+  if(StationList.length < 1){
+    return(
+      <div className="container-fluid d-flex flex-column align-items-center overflow-hidden min-vh-100">
+        <PiEmptyLight className="mt-5 text-white fs-1"/>
+        <span className="text-white mt-2">Oops! Parece que não existe nenhuma estação com este nome.</span>  
+      </div>
+    )
+  }
+
 
   return (
     <ul className="container-fluid d-flex p-3 flex-column overflow-auto min-vh-100 gap-4 component-allStationsList">
